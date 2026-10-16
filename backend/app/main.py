@@ -36,16 +36,23 @@ async def lifespan(app: FastAPI):
         # Check if admin exists
         admin = db.query(User).filter(User.email == settings.ADMIN_EMAIL.lower()).first()
         if not admin:
-            admin = User(
-                email=settings.ADMIN_EMAIL.lower(),
-                hashed_password=get_password_hash(settings.ADMIN_DEFAULT_PASSWORD),
-                full_name="Yojana AI Administrator",
-                role="admin",
-                is_active=True
-            )
-            db.add(admin)
-            db.commit()
-            logger.info("Created default administrator: %s", settings.ADMIN_EMAIL)
+            if settings.ADMIN_DEFAULT_PASSWORD:
+                admin = User(
+                    email=settings.ADMIN_EMAIL.lower(),
+                    hashed_password=get_password_hash(settings.ADMIN_DEFAULT_PASSWORD),
+                    full_name="Yojana AI Administrator",
+                    role="admin",
+                    is_active=True
+                )
+                db.add(admin)
+                db.commit()
+                logger.info("Created default administrator account: %s", settings.ADMIN_EMAIL)
+            else:
+                logger.warning(
+                    "ADMIN_DEFAULT_PASSWORD is not set. Default admin account '%s' was not automatically initialized. "
+                    "Set ADMIN_DEFAULT_PASSWORD in your environment variables to create the administrator.",
+                    settings.ADMIN_EMAIL
+                )
 
         # Seed initial schemes
         seed_schemes_from_json(db, force=False)
@@ -63,16 +70,43 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# CORS Middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
+# CORS Middleware Configuration
+def build_cors_origins() -> list[str]:
+    origins = [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "*"
-    ],
+    ]
+    # Add configured production frontend URL
+    if settings.FRONTEND_URL:
+        for u in settings.FRONTEND_URL.split(","):
+            cleaned = u.strip().rstrip("/")
+            if cleaned and cleaned not in origins:
+                origins.append(cleaned)
+    
+    # Add any extra allowed origins
+    if isinstance(settings.ALLOWED_ORIGINS, list):
+        for u in settings.ALLOWED_ORIGINS:
+            cleaned = u.strip().rstrip("/")
+            if cleaned and cleaned not in origins:
+                origins.append(cleaned)
+    elif isinstance(settings.ALLOWED_ORIGINS, str) and settings.ALLOWED_ORIGINS:
+        for u in settings.ALLOWED_ORIGINS.split(","):
+            cleaned = u.strip().rstrip("/")
+            if cleaned and cleaned not in origins:
+                origins.append(cleaned)
+
+    # Exclude wildcard "*" to ensure strict credential security
+    safe_origins = [o for o in origins if o != "*"]
+    return safe_origins
+
+allowed_cors_origins = build_cors_origins()
+logger.info("Active CORS allowed origins: %s", allowed_cors_origins)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=allowed_cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

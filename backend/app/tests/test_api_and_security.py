@@ -136,3 +136,27 @@ def test_scheme_catalog_and_filters():
         assert edu_resp.status_code == 200
         for s in edu_resp.json():
             assert s["category"] == "education"
+
+def test_production_security_validation():
+    from app.core.config import Settings
+    
+    # In production without a 32+ char key, Settings must raise ValueError
+    with pytest.raises(ValueError) as excinfo:
+        Settings(ENVIRONMENT="production", SECRET_KEY="short-key")
+    assert "SECRET_KEY of at least 32 characters" in str(excinfo.value)
+
+    # In production with a valid strong key, Settings validates
+    valid_settings = Settings(
+        ENVIRONMENT="production",
+        SECRET_KEY="a" * 32,
+        ADMIN_DEFAULT_PASSWORD="SecurePassword123!"
+    )
+    assert valid_settings.SECRET_KEY == "a" * 32
+
+def test_cors_configuration_no_wildcard_with_credentials():
+    from app.main import build_cors_origins
+    
+    origins = build_cors_origins()
+    assert "*" not in origins
+    assert "http://localhost:5173" in origins
+    assert "http://127.0.0.1:5173" in origins

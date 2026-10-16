@@ -3,7 +3,10 @@ import {
   UploadedDocument, ApplicationTrackerItem, SavedSchemeItem, ChatMessage
 } from '../types';
 
-const API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'http://127.0.0.1:8000/api';
+const rawEnvUrl = (import.meta as any).env?.VITE_API_BASE_URL?.trim();
+const API_BASE_URL = rawEnvUrl
+  ? (rawEnvUrl.endsWith('/api') ? rawEnvUrl : `${rawEnvUrl.replace(/\/+$/, '')}/api`)
+  : 'http://127.0.0.1:8000/api';
 
 function getAuthHeaders(): HeadersInit {
   const token = localStorage.getItem('yojana_token');
