@@ -1,0 +1,553 @@
+[
+  {
+    "id": "pm-kisan",
+    "official_name": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)",
+    "short_summary": "Income support of ₹6,000 per year in three equal installments to all landholding farmer families across India.",
+    "detailed_description": "Pradhan Mantri Kisan Samman Nidhi (PM-KISAN) is a Central Sector scheme with 100% funding from Government of India. Under the scheme an income support of ₹6,000/- per year in three equal installments is provided to all landholding farmer families, subject to certain exclusion criteria relating to higher income status.",
+    "benefits_summary": "₹6,000 per year directly credited to the farmer's Aadhaar-linked bank account in 3 installments of ₹2,000 every four months.",
+    "benefit_amount_min": 6000.0,
+    "benefit_amount_max": 6000.0,
+    "benefit_type": "financial",
+    "category": "agriculture",
+    "government_level": "central",
+    "applicable_states": ["All India"],
+    "target_beneficiaries": ["farmers", "rural_households"],
+    "required_documents": ["Aadhaar Card", "Land Ownership Documents (7/12 extract / RoR)", "Bank Account Passbook"],
+    "application_process": "Farmers can self-register through the Farmers Corner on pmkisan.gov.in or visit the nearest Common Service Centre (CSC) with land revenue records and Aadhaar.",
+    "official_application_url": "https://pmkisan.gov.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pm-kisan",
+    "source_authority": "Ministry of Agriculture & Farmers Welfare, Government of India",
+    "verification_status": "verified",
+    "cycle_year": "2024-2025",
+    "dates": {
+      "opening_date": "2024-04-01",
+      "closing_date": null,
+      "deadline_type": "continuous",
+      "source_reference": "Official PM-KISAN portal (Continuous registration window open throughout the year)"
+    },
+    "rules": [
+      {
+        "field": "is_farmer",
+        "operator": "==",
+        "value": true,
+        "mandatory": true,
+        "label": "Farmer Status",
+        "reason_on_pass": "Confirmed agricultural / farmer household status.",
+        "reason_on_fail": "Applicant must be a landholding farmer family."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 1500000,
+        "mandatory": false,
+        "label": "Exclusion Criteria Check",
+        "reason_on_pass": "Income satisfies non-exclusion guideline.",
+        "reason_on_fail": "Institutional landowners and high tax-paying brackets are excluded."
+      }
+    ]
+  },
+  {
+    "id": "maha-ebc-shikshan-shulkh",
+    "official_name": "Rajarshi Chhatrapati Shahu Maharaj Shikshan Shulkh Shishyavrutti Yojna (EBC)",
+    "short_summary": "50% tuition and exam fee reimbursement for Economically Backward Class (EBC) students in Maharashtra pursuing higher education.",
+    "detailed_description": "Introduced by the Department of Higher & Technical Education, Government of Maharashtra, this scheme provides financial assistance to students admitted to government, government-aided, and non-aided private professional institutions whose annual family income is up to ₹8,00,000.",
+    "benefits_summary": "50% reimbursement of tuition fees and exam fees for eligible professional and non-professional higher education courses.",
+    "benefit_amount_min": 15000.0,
+    "benefit_amount_max": 150000.0,
+    "benefit_type": "scholarship",
+    "category": "education",
+    "government_level": "state",
+    "applicable_states": ["Maharashtra"],
+    "target_beneficiaries": ["students", "low_income"],
+    "required_documents": ["Domicile Certificate of Maharashtra", "Income Certificate issued by Tahsildar (<= ₹8 Lakhs)", "HSC / SSC Marksheet", "College Admission Bonafide Certificate / Fee Receipt", "Ration Card"],
+    "application_process": "Apply online through the MahaDBT portal under the Directorate of Higher Education (DHE) or Technical Education (DTE). Submit verified documents to college nodal officer.",
+    "official_application_url": "https://mahadbt.maharashtra.gov.in/",
+    "official_source_url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA3703DE613A17B69D0F396CD2EC",
+    "source_authority": "Directorate of Higher and Technical Education, Government of Maharashtra",
+    "verification_status": "verified",
+    "cycle_year": "2024-2025",
+    "dates": {
+      "opening_date": "2024-08-01",
+      "closing_date": "2025-03-31",
+      "deadline_type": "fixed",
+      "source_reference": "MahaDBT Academic Year 2024-25 official portal notification"
+    },
+    "rules": [
+      {
+        "field": "state",
+        "operator": "==",
+        "value": "Maharashtra",
+        "mandatory": true,
+        "label": "Maharashtra Domicile",
+        "reason_on_pass": "Resident of Maharashtra.",
+        "reason_on_fail": "Applicant must be a permanent resident of Maharashtra."
+      },
+      {
+        "field": "education_status",
+        "operator": "==",
+        "value": "studying",
+        "mandatory": true,
+        "label": "Student Status",
+        "reason_on_pass": "Currently pursuing education.",
+        "reason_on_fail": "Must be currently enrolled in an eligible college or university."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 800000,
+        "mandatory": true,
+        "label": "Annual Family Income",
+        "reason_on_pass": "Annual family income is within the ceiling of ₹8,00,000.",
+        "reason_on_fail": "Annual family income exceeds the ceiling of ₹8,00,000."
+      }
+    ]
+  },
+  {
+    "id": "maha-post-matric-obc",
+    "official_name": "Post-Matric Scholarship to Other Backward Class (OBC) Students - Maharashtra",
+    "short_summary": "100% tuition fees, exam fees, and monthly maintenance allowance for eligible OBC students pursuing post-matric courses.",
+    "detailed_description": "Administered by the VJNT, OBC and SBC Welfare Department of Maharashtra, this scheme ensures higher education accessibility for OBC students whose family income does not exceed ₹1,50,000 per annum.",
+    "benefits_summary": "Full reimbursement of tuition fees, examination fees, and fixed monthly maintenance allowance as per course level.",
+    "benefit_amount_min": 10000.0,
+    "benefit_amount_max": 90000.0,
+    "benefit_type": "scholarship",
+    "category": "education",
+    "government_level": "state",
+    "applicable_states": ["Maharashtra"],
+    "target_beneficiaries": ["students", "obc"],
+    "required_documents": ["Caste Certificate (OBC)", "Non-Creamy Layer Certificate", "Income Certificate (<= ₹1.5 Lakhs)", "Domicile Certificate", "Previous Year Marksheet", "College Fee Receipt"],
+    "application_process": "Register on the MahaDBT portal, select VJNT, OBC and SBC Welfare Department, fill academic information and upload verified caste and income certificates.",
+    "official_application_url": "https://mahadbt.maharashtra.gov.in/",
+    "official_source_url": "https://mahadbt.maharashtra.gov.in/SchemeData/SchemeData?str=E9DDFA3703DE613AB5BE5B309A296D87",
+    "source_authority": "VJNT, OBC & SBC Welfare Department, Government of Maharashtra",
+    "verification_status": "verified",
+    "cycle_year": "2024-2025",
+    "dates": {
+      "opening_date": "2024-07-15",
+      "closing_date": "2025-03-31",
+      "deadline_type": "fixed",
+      "source_reference": "MahaDBT 2024-25 cycle notifications"
+    },
+    "rules": [
+      {
+        "field": "state",
+        "operator": "==",
+        "value": "Maharashtra",
+        "mandatory": true,
+        "label": "State Domicile",
+        "reason_on_pass": "Domicile of Maharashtra confirmed.",
+        "reason_on_fail": "Requires Maharashtra residency."
+      },
+      {
+        "field": "category",
+        "operator": "in",
+        "value": ["obc", "vjnt", "sbc"],
+        "mandatory": true,
+        "label": "Category",
+        "reason_on_pass": "Applicant belongs to OBC / VJNT / SBC category.",
+        "reason_on_fail": "Scheme is specifically for OBC, VJNT, and SBC candidates."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 150000,
+        "mandatory": true,
+        "label": "Annual Family Income",
+        "reason_on_pass": "Family income is within the ₹1,50,000 threshold.",
+        "reason_on_fail": "Family income must be less than or equal to ₹1,50,000 for 100% scholarship."
+      },
+      {
+        "field": "education_status",
+        "operator": "==",
+        "value": "studying",
+        "mandatory": true,
+        "label": "Enrolment Status",
+        "reason_on_pass": "Student enrolled in post-matric degree or diploma course.",
+        "reason_on_fail": "Must be an enrolled student."
+      }
+    ]
+  },
+  {
+    "id": "maha-post-matric-sc",
+    "official_name": "Government of India Post-Matric Scholarship for Scheduled Caste (SC) Students",
+    "short_summary": "Full non-refundable fees reimbursement and maintenance allowance for SC students pursuing post-matric courses in Maharashtra.",
+    "detailed_description": "Centrally sponsored scheme implemented through the Social Justice and Special Assistance Department of Maharashtra. Provides financial support to eligible Scheduled Caste students studying in accredited colleges and universities.",
+    "benefits_summary": "100% course tuition fees, exam fees, study tour charges, and monthly maintenance allowance up to ₹13,500 per year.",
+    "benefit_amount_min": 12000.0,
+    "benefit_amount_max": 120000.0,
+    "benefit_type": "scholarship",
+    "category": "education",
+    "government_level": "state",
+    "applicable_states": ["Maharashtra"],
+    "target_beneficiaries": ["students", "sc"],
+    "required_documents": ["Caste Certificate (SC)", "Caste Validity Certificate (for professional courses)", "Income Certificate (<= ₹2.5 Lakhs)", "Marksheet", "College Admission Receipt"],
+    "application_process": "Submit application through MahaDBT under Social Justice and Special Assistance Department.",
+    "official_application_url": "https://mahadbt.maharashtra.gov.in/",
+    "official_source_url": "https://socialjustice.gov.in/schemes/post-matric-scholarship-sc-students",
+    "source_authority": "Social Justice and Special Assistance Department, Maharashtra",
+    "verification_status": "verified",
+    "cycle_year": "2024-2025",
+    "dates": {
+      "opening_date": "2024-07-15",
+      "closing_date": "2025-03-31",
+      "deadline_type": "fixed",
+      "source_reference": "Social Justice Department notification 2024-25"
+    },
+    "rules": [
+      {
+        "field": "category",
+        "operator": "==",
+        "value": "sc",
+        "mandatory": true,
+        "label": "SC Category",
+        "reason_on_pass": "Scheduled Caste (SC) category verified.",
+        "reason_on_fail": "Scheme is specifically for Scheduled Caste students."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 250000,
+        "mandatory": true,
+        "label": "Annual Family Income",
+        "reason_on_pass": "Family income is within the ₹2,50,000 ceiling.",
+        "reason_on_fail": "Family income exceeds the ceiling of ₹2,50,000."
+      },
+      {
+        "field": "education_status",
+        "operator": "==",
+        "value": "studying",
+        "mandatory": true,
+        "label": "Current Education Status",
+        "reason_on_pass": "Currently pursuing post-matric education.",
+        "reason_on_fail": "Must be enrolled in recognized post-matric course."
+      }
+    ]
+  },
+  {
+    "id": "ayushman-bharat-pmjay",
+    "official_name": "Ayushman Bharat PM-JAY (Pradhan Mantri Jan Arogya Yojana)",
+    "short_summary": "Health insurance cover of up to ₹5 Lakhs per family per year for secondary and tertiary care hospitalization across India.",
+    "detailed_description": "Ayushman Bharat PM-JAY is the world's largest government-financed health assurance scheme. It provides cashless access to healthcare services for the beneficiary at the point of service in empaneled public and private hospitals across India.",
+    "benefits_summary": "Cashless health cover up to ₹5,00,000 per family per year covering medical examination, treatment, consultation, pre- and post-hospitalization, and diagnostic services.",
+    "benefit_amount_min": 500000.0,
+    "benefit_amount_max": 500000.0,
+    "benefit_type": "insurance",
+    "category": "healthcare",
+    "government_level": "central",
+    "applicable_states": ["All India"],
+    "target_beneficiaries": ["low_income", "rural_households", "urban_workers"],
+    "required_documents": ["Aadhaar Card", "Ration Card", "Government Identity Proof"],
+    "application_process": "Check eligibility online at beneficiary.nha.gov.in or visit an Ayushman Mitra at any empaneled hospital / CSC with Aadhaar and Ration Card to create an Ayushman Card.",
+    "official_application_url": "https://beneficiary.nha.gov.in/",
+    "official_source_url": "https://pmjay.gov.in/",
+    "source_authority": "National Health Authority (NHA), Ministry of Health & Family Welfare, GoI",
+    "verification_status": "verified",
+    "cycle_year": "Continuous",
+    "dates": {
+      "opening_date": "2018-09-23",
+      "closing_date": null,
+      "deadline_type": "continuous",
+      "source_reference": "NHA Official Portal — Continuous enrolment open nationwide"
+    },
+    "rules": [
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 300000,
+        "mandatory": true,
+        "label": "Economic Criterion",
+        "reason_on_pass": "Household falls within the target economic group.",
+        "reason_on_fail": "Family income exceeds the standard eligibility ceiling for subsidized coverage."
+      }
+    ]
+  },
+  {
+    "id": "nsp-central-sector-scholarship",
+    "official_name": "Central Sector Scheme of Scholarship for College and University Students (NSP)",
+    "short_summary": "Merit-cum-means scholarship of ₹12,000 to ₹20,000 per year for meritorious students pursuing regular degree courses.",
+    "detailed_description": "Instituted by the Department of Higher Education, Ministry of Education, this scheme supports meritorious students from economically weaker sections. 50% of scholarships are earmarked for female students.",
+    "benefits_summary": "₹12,000 per annum for the first three years of undergraduate studies; ₹20,000 per annum at the postgraduate stage.",
+    "benefit_amount_min": 12000.0,
+    "benefit_amount_max": 20000.0,
+    "benefit_type": "scholarship",
+    "category": "education",
+    "government_level": "central",
+    "applicable_states": ["All India"],
+    "target_beneficiaries": ["students"],
+    "required_documents": ["Class 12th Board Marksheet", "Income Certificate (<= ₹4.5 Lakhs)", "College Bonafide Certificate", "Aadhaar Card", "Bank Account in student's name"],
+    "application_process": "Apply on the National Scholarship Portal (NSP scholarships.gov.in). Verification performed by institution and State Nodal Officer.",
+    "official_application_url": "https://scholarships.gov.in/",
+    "official_source_url": "https://www.education.gov.in/schemes-higher-education",
+    "source_authority": "Department of Higher Education, Ministry of Education, Government of India",
+    "verification_status": "verified",
+    "cycle_year": "2024-2025",
+    "dates": {
+      "opening_date": "2024-07-01",
+      "closing_date": "2024-12-31",
+      "deadline_type": "fixed",
+      "source_reference": "National Scholarship Portal 2024-25 schedule"
+    },
+    "rules": [
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 450000,
+        "mandatory": true,
+        "label": "Annual Family Income",
+        "reason_on_pass": "Family income is within the ₹4,50,000 limit.",
+        "reason_on_fail": "Family income exceeds the limit of ₹4,50,000 per annum."
+      },
+      {
+        "field": "age",
+        "operator": "<=",
+        "value": 25,
+        "mandatory": true,
+        "label": "Age Limit",
+        "reason_on_pass": "Age is under the 25-year threshold.",
+        "reason_on_fail": "Applicant age must be 25 years or younger at admission."
+      },
+      {
+        "field": "education_status",
+        "operator": "==",
+        "value": "studying",
+        "mandatory": true,
+        "label": "Current Education Status",
+        "reason_on_pass": "Regular college/university student.",
+        "reason_on_fail": "Must be enrolled in a regular college degree programme."
+      }
+    ]
+  },
+  {
+    "id": "pmay-gramin",
+    "official_name": "Pradhan Mantri Awas Yojana - Gramin (PMAY-G)",
+    "short_summary": "Financial grant of ₹1.20 Lakhs to ₹1.30 Lakhs for constructing a pucca house with basic amenities for homeless rural households.",
+    "detailed_description": "PMAY-G aims to provide a pucca house with water, sanitation, and electricity to all houseless households and households living in kutcha and dilapidated houses in rural areas.",
+    "benefits_summary": "Direct financial assistance of ₹1,20,000 (plains) or ₹1,30,000 (hilly/difficult areas) in instalments linked to construction milestones, plus 90 days of MGNREGS wages.",
+    "benefit_amount_min": 120000.0,
+    "benefit_amount_max": 130000.0,
+    "benefit_type": "housing",
+    "category": "housing",
+    "government_level": "central",
+    "applicable_states": ["All India"],
+    "target_beneficiaries": ["rural_households", "low_income"],
+    "required_documents": ["Aadhaar Card", "Bank Account Passbook", "MGNREGA Job Card Number", "Land Possession Proof / Certificate"],
+    "application_process": "Beneficiary identification based on SECC 2011 and Awaas+ list verified by Gram Sabha. Registration facilitated through the Gram Panchayat or AwaasApp.",
+    "official_application_url": "https://pmayg.nic.in/",
+    "official_source_url": "https://www.myscheme.gov.in/schemes/pmay-g",
+    "source_authority": "Ministry of Rural Development, Government of India",
+    "verification_status": "verified",
+    "cycle_year": "2024-2029",
+    "dates": {
+      "opening_date": "2024-04-01",
+      "closing_date": null,
+      "deadline_type": "continuous",
+      "source_reference": "Union Cabinet approval extending PMAY-G up to 2029"
+    },
+    "rules": [
+      {
+        "field": "residence_type",
+        "operator": "==",
+        "value": "rural",
+        "mandatory": true,
+        "label": "Rural Resident",
+        "reason_on_pass": "Rural residence verified.",
+        "reason_on_fail": "PMAY-G is specifically for rural households."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 300000,
+        "mandatory": true,
+        "label": "Annual Income",
+        "reason_on_pass": "Income conforms to low-income / EWS criteria.",
+        "reason_on_fail": "Income exceeds the rural housing grant eligibility limit."
+      }
+    ]
+  },
+  {
+    "id": "nsap-ignoaps-pension",
+    "official_name": "Indira Gandhi National Old Age Pension Scheme (IGNOAPS - NSAP)",
+    "short_summary": "Monthly social security pension for destitute senior citizens aged 60 and above living below poverty line.",
+    "detailed_description": "Part of the National Social Assistance Programme (NSAP), IGNOAPS provides non-contributory pensions to elderly citizens belonging to households below the poverty line.",
+    "benefits_summary": "Monthly pension of ₹500 to ₹1,000 per month (co-funded with state top-up in Maharashtra) transferred directly to bank account.",
+    "benefit_amount_min": 6000.0,
+    "benefit_amount_max": 12000.0,
+    "benefit_type": "pension",
+    "category": "social_welfare",
+    "government_level": "central",
+    "applicable_states": ["All India"],
+    "target_beneficiaries": ["senior_citizens", "low_income"],
+    "required_documents": ["Age Proof / Birth Certificate / Aadhaar", "BPL Ration Card or Income Certificate (<= ₹1 Lakh)", "Bank Account Details"],
+    "application_process": "Submit application to the Tahsildar / Block Development Officer (BDO) or apply through the State Portal / services.india.gov.in.",
+    "official_application_url": "https://nsap.nic.in/",
+    "official_source_url": "https://nsap.nic.in/guidelines.html",
+    "source_authority": "Ministry of Rural Development, Government of India",
+    "verification_status": "verified",
+    "cycle_year": "Continuous",
+    "dates": {
+      "opening_date": "2020-01-01",
+      "closing_date": null,
+      "deadline_type": "continuous",
+      "source_reference": "NSAP official portal guidelines — continuous rolling enrolment"
+    },
+    "rules": [
+      {
+        "field": "age",
+        "operator": ">=",
+        "value": 60,
+        "mandatory": true,
+        "label": "Senior Citizen Age",
+        "reason_on_pass": "Age is 60 years or above.",
+        "reason_on_fail": "Applicant must be at least 60 years of age."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 100000,
+        "mandatory": true,
+        "label": "BPL Household Income",
+        "reason_on_pass": "Family income satisfies BPL income condition.",
+        "reason_on_fail": "Family income exceeds the poverty line threshold (₹1,00,000)."
+      }
+    ]
+  },
+  {
+    "id": "nsap-igndps-disability-pension",
+    "official_name": "Indira Gandhi National Disability Pension Scheme (IGNDPS)",
+    "short_summary": "Monthly financial assistance for persons aged 18-59 with severe or multiple disabilities (80% and above).",
+    "detailed_description": "Provides social security pensions to persons with severe disabilities living below poverty line to assist with basic maintenance and livelihood.",
+    "benefits_summary": "Monthly pension of ₹500 to ₹1,000 per month disbursed directly through Aadhaar Enabled Payment System (AePS) or DBT.",
+    "benefit_amount_min": 6000.0,
+    "benefit_amount_max": 12000.0,
+    "benefit_type": "pension",
+    "category": "social_welfare",
+    "government_level": "central",
+    "applicable_states": ["All India"],
+    "target_beneficiaries": ["disability", "low_income"],
+    "required_documents": ["Disability Certificate (minimum 80% or UDID Card)", "Age Proof (18-59 years)", "BPL Certificate / Income Proof", "Bank Account Passbook"],
+    "application_process": "Apply at the local Social Welfare Office, Municipal Corporation / Block Office with valid UDID card.",
+    "official_application_url": "https://nsap.nic.in/",
+    "official_source_url": "https://nsap.nic.in/",
+    "source_authority": "Ministry of Rural Development & Department of Empowerment of Persons with Disabilities",
+    "verification_status": "verified",
+    "cycle_year": "Continuous",
+    "dates": {
+      "opening_date": "2020-01-01",
+      "closing_date": null,
+      "deadline_type": "continuous",
+      "source_reference": "NSAP guidelines — ongoing registration"
+    },
+    "rules": [
+      {
+        "field": "is_disabled",
+        "operator": "==",
+        "value": true,
+        "mandatory": true,
+        "label": "Disability Status",
+        "reason_on_pass": "Persons with disability status confirmed.",
+        "reason_on_fail": "Applicant must be a person with benchmark disability."
+      },
+      {
+        "field": "disability_percentage",
+        "operator": ">=",
+        "value": 80,
+        "mandatory": true,
+        "label": "Disability Percentage",
+        "reason_on_pass": "Severe disability threshold (80%+) verified.",
+        "reason_on_fail": "Scheme requires severe or multiple disability of 80% or above."
+      },
+      {
+        "field": "age",
+        "operator": ">=",
+        "value": 18,
+        "mandatory": true,
+        "label": "Minimum Age (18)",
+        "reason_on_pass": "Applicant is 18 years or older.",
+        "reason_on_fail": "Applicant must be at least 18 years old."
+      },
+      {
+        "field": "age",
+        "operator": "<=",
+        "value": 59,
+        "mandatory": true,
+        "label": "Maximum Age (59)",
+        "reason_on_pass": "Applicant is below 60 years (qualifies for IGNDPS).",
+        "reason_on_fail": "Persons aged 60+ transition to Old Age Pension (IGNOAPS)."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 120000,
+        "mandatory": true,
+        "label": "Family Income",
+        "reason_on_pass": "Income satisfies BPL condition.",
+        "reason_on_fail": "Household income exceeds BPL limit."
+      }
+    ]
+  },
+  {
+    "id": "maha-free-education-girls",
+    "official_name": "Maharashtra 100% Free Higher Education for Girls Scheme",
+    "short_summary": "100% reimbursement of tuition and exam fees for girl students pursuing degree and professional courses in Maharashtra.",
+    "detailed_description": "Approved by the Maharashtra State Cabinet in 2024, this landmark scheme provides complete fee waiver (100% tuition and examination fees) to girl students from families with annual income up to ₹8,00,000 enrolled in higher and technical courses including Engineering, Medicine, Pharmacy, Agriculture, Law, and Polytechnic.",
+    "benefits_summary": "Full 100% tuition fee and examination fee waiver for recognized higher and technical education institutions.",
+    "benefit_amount_min": 25000.0,
+    "benefit_amount_max": 250000.0,
+    "benefit_type": "scholarship",
+    "category": "education",
+    "government_level": "state",
+    "applicable_states": ["Maharashtra"],
+    "target_beneficiaries": ["women", "students"],
+    "required_documents": ["Maharashtra Domicile Certificate", "Income Certificate (<= ₹8 Lakhs)", "Admission Confirmation / CAP Allotment Letter", "Aadhaar Card", "Bank Account in Student's Name"],
+    "application_process": "Apply through the MahaDBT portal under the Higher & Technical Education department tab for the 100% Girls Fee Waiver scheme.",
+    "official_application_url": "https://mahadbt.maharashtra.gov.in/",
+    "official_source_url": "https://www.maharashtra.gov.in/",
+    "source_authority": "Higher and Technical Education Department, Government of Maharashtra",
+    "verification_status": "verified",
+    "cycle_year": "2024-2025",
+    "dates": {
+      "opening_date": "2024-07-01",
+      "closing_date": "2025-03-31",
+      "deadline_type": "fixed",
+      "source_reference": "Government Resolution (GR) No. TEM-2024/CR-123/TE-4 dated July 2024"
+    },
+    "rules": [
+      {
+        "field": "gender",
+        "operator": "==",
+        "value": "female",
+        "mandatory": true,
+        "label": "Gender",
+        "reason_on_pass": "Female candidate eligibility satisfied.",
+        "reason_on_fail": "This specific scheme is designated for female students."
+      },
+      {
+        "field": "state",
+        "operator": "==",
+        "value": "Maharashtra",
+        "mandatory": true,
+        "label": "Maharashtra Domicile",
+        "reason_on_pass": "Maharashtra resident.",
+        "reason_on_fail": "Applicant must reside in Maharashtra."
+      },
+      {
+        "field": "education_status",
+        "operator": "==",
+        "value": "studying",
+        "mandatory": true,
+        "label": "Currently Enrolled",
+        "reason_on_pass": "Enrolled in higher education degree/diploma.",
+        "reason_on_fail": "Applicant must be currently studying in recognized college."
+      },
+      {
+        "field": "annual_family_income",
+        "operator": "<=",
+        "value": 800000,
+        "mandatory": true,
+        "label": "Annual Income (<= ₹8 Lakhs)",
+        "reason_on_pass": "Family income is within the ₹8,00,000 threshold.",
+        "reason_on_fail": "Annual family income exceeds ₹8,00,000."
+      }
+    ]
+  }
+]
