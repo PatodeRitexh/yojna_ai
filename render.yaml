@@ -1,7 +1,8 @@
+
 services:
   - type: web
     name: yojana-ai-backend
-    env: python
+    runtime: python
     region: singapore
     plan: free
     buildCommand: "pip install -r backend/requirements.txt"
@@ -26,9 +27,9 @@ services:
       - key: GEMINI_API_KEY
         sync: false
 
-  - type: static
+  - type: web
     name: yojana-ai-frontend
-    plan: free
+    runtime: static
     buildCommand: "cd frontend && npm install && npm run build"
     staticPublishPath: "./frontend/dist"
     routes:
